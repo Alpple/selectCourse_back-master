@@ -14,6 +14,6 @@ public class LessonTimeConverter {
         Integer lesson = Integer.valueOf(split[1]);
         Integer length = Integer.valueOf(split[2]);
         return String.format(COURSE_TIME_FORMAT,
-                CHINESE_WEEK_NUMBER[week], lesson + length - 1);
+                CHINESE_WEEK_NUMBER[week], lesson, lesson + length - 1);
     }
 }
