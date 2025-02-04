@@ -1,5 +1,8 @@
 package com.course.model.vo.response.table;
 
+import lombok.Data;
+
+@Data
 public class StudentCourseSelectedItemVO {
     private Integer studentCourseId;
     private String courseName;
