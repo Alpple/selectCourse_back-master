@@ -11,7 +11,6 @@ import javax.validation.constraints.Pattern;
 @TableName("course")
 @Data
 public class CourseEntity {
-
     public static final String ID = "course_id";
     public static final String TEACHER_ID = "teacher_id";
     public static final String NAME = "course_name";

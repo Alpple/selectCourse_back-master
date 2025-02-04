@@ -35,6 +35,10 @@ public class StudentDAO extends BaseDAO {
         return mapper.deleteById(id);
     }
 
+    public StudentEntity get(Integer id) {
+        return mapper.selectById(id);
+    }
+
     public int update(StudentEntity entity) {
         return mapper.updateById(entity);
     }
