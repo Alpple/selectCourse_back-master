@@ -12,7 +12,7 @@ import javax.validation.constraints.Pattern;
 @Data
 public class CourseEntity {
     public static final String ID = "course_id";
-    public static final String TEACHER_ID = "teacher_id";
+    public static final String TEACHER_ID = "course_teacher_id";
     public static final String NAME = "course_name";
     public static final String GRADE = "course_grade";
     private static final String TIME = "course_time";
