@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.course.dao.mapper.TeacherAssessMapper">
+    <select id="selectAssessJoinTeacherAndCourseList" resultType="TeacherAssessItemVO">
+        SELECT
+            teacher_assess.assess_id as assess_id,
+            course.course_name as course_name,
+            teacher.teacher_name as teacher_name,
+            teacher_assess.assess_course_quality as quality,
+            teacher_assess.assess_teaching_style as style,
+            teacher_assess.assess_interaction as interaction,
+            teacher_assess.assess_clarity as clarity,
+            teacher_assess.assess_comment as comment,
+            student_course.sc_student_id as student_id,
+            student_course.sc_course_id as course_id
+        FROM student_course
+            left JOIN course
+            ON course.course_id = student_course.sc_course_id
+            left JOIN teacher
+            ON teacher.teacher_id = course.course_teacher_id
+            left join teacher_assess
+                 on teacher_assess.assess_course_id = course.course_id
+        where student_course.sc_student_id = #{studentId}
+    </select>
+
+    <select id="selectAssessJoinStudentAndCourseList" resultType="StudentAssessItemVO">
+        SELECT
+            course.course_name as course_name,
+            student.student_name as student_name,
+            teacher_assess.assess_course_quality as quality,
+            teacher_assess.assess_teaching_style as style,
+            teacher_assess.assess_interaction as interaction,
+            teacher_assess.assess_clarity as clarity,
+            teacher_assess.assess_comment as comment
+        FROM student_course
+                 left JOIN course
+                           ON course.course_id = student_course.sc_course_id
+                 left JOIN student
+                           ON student.student_id = student_course.sc_student_id
+                 left join teacher_assess
+                           on teacher_assess.assess_course_id = course.course_id
+        where student_course.sc_course_id = #{courseId}
+    </select>
+<!--    @Data
+public class StudentAssessItemVO {
+    private String courseName;
+    private String studentName;
+    private Integer quality;
+    private Integer style;
+    private Integer interaction;
+    private Integer clarity;
+    private String comment;
+
+    -->
+</mapper>

@@ -1,7 +1,6 @@
 package com.course.controller.teacher;
 
 import com.course.config.themis.annotation.Teacher;
-import com.course.controller.BaseController;
 import com.course.model.vo.response.ResultVO;
 import com.course.model.vo.response.TeacherGradeVO;
 import com.course.service.teacher.GradeService;
@@ -11,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 @Teacher
 @RequestMapping("/teacher/grade")
 @RestController
-public class GradeController extends BaseController {
+public class GradeController {
     private final GradeService service;
 
     public GradeController(GradeService service) {

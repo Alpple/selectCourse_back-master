@@ -1,5 +1,6 @@
 package com.course.service.teacher;
 
+
 import com.course.manager.teacher.GradeManager;
 import com.course.model.entity.StudentCourseEntity;
 import com.course.model.vo.response.ResultVO;
@@ -16,6 +17,7 @@ public class GradeService extends BaseService {
         this.manager = manager;
     }
 
+
     //    获取成绩页面数
     public ResultVO getPageCount(String courseName, String studentName) {
         Integer teacherId = getUserId();
@@ -25,32 +27,33 @@ public class GradeService extends BaseService {
     //    获取成绩页面
     public ResultVO getPage(Integer index, String courseName, String studentName) {
         Integer teacherId = getUserId();
-        return result(manager.getTeacherGradePage(teacherId, index, courseName, studentName));
+        return result(manager.getTeacherGradePage(index, teacherId, courseName, studentName));
     }
 
     //    更新学生课程成绩
     public ResultVO update(TeacherGradeVO vo) {
+
         Integer teacherId = getUserId();
         StudentCourseEntity studentCourse = manager.getStudentCourseById(vo.getStudentCourseId());
-
         if (studentCourse == null) {
-            return failedResult("学生选课id：" + vo.getStudentCourseId() + "不存在");
+            return failedResult("学生选课Id:" + vo.getStudentCourseId() + "不存在");
         }
         if (!manager.getCourseById(studentCourse.getCourseId()).getTeacherId().equals(teacherId)) {
             return failedResult("此课程非您教授");
         }
 
         BeanUtils.copyProperties(vo, studentCourse);
+
         manager.updateStudentCourse(studentCourse);
         return result("打分成功");
     }
 
     public ResultVO get(Integer studentCourseId) {
+
         Integer teacherId = getUserId();
         StudentCourseEntity studentCourse = manager.getStudentCourseById(studentCourseId);
-
         if (studentCourse == null) {
-            return failedResult("学生选课id："+ studentCourseId+"不存在");
+            return failedResult("学生选课Id:" + studentCourseId + "不存在");
         }
         if (!manager.getCourseById(studentCourse.getCourseId()).getTeacherId().equals(teacherId)) {
             return failedResult("此课程非您教授");

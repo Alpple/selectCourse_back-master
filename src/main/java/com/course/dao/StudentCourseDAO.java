@@ -77,20 +77,20 @@ public class StudentCourseDAO extends BaseDAO {
         return mapper.listStudentCourseSelected(studentId);
     }
 
-    public Integer countStudentCourseSelectedByTimePart(Integer studentId,String timePart) {
-        return mapper.countStudentCourseSelectedByTimePart(studentId,timePart);
+    public Integer countStudentCourseSelectedByTimePart(Integer studentId, String timePart) {
+        return mapper.countStudentCourseSelectedByTimePart(studentId, timePart);
     }
 
     public List<TimetableItemVO> listStudentTimetable(Integer studentId) {
         return mapper.listStudentTimetable(studentId);
     }
 
-    public Integer countTeacherGrade(Integer teacherId,String courseName,String studentName) {
-        return mapper.countTeacherGrade(teacherId,courseName,studentName);
+    public Integer countTeacherGrade(Integer teacherId, String courseName, String studentName) {
+        return mapper.countTeacherGrade(teacherId, courseName, studentName);
     }
 
-    public List<TeacherGradeItemVO> getTeacherGradePage(Integer index,Integer teacherId,String courseName,String studentName) {
+    public List<TeacherGradeItemVO> getTeacherGradePage(Integer index, Integer teacherId, String courseName, String studentName) {
         Page<TeacherGradeItemVO> page = new Page<>(index, PAGE_SIZE);
-        return mapper.getTeacherGradePage(page,teacherId,courseName,studentName).getRecords();
+        return mapper.getTeacherGradePage(page, teacherId, courseName, studentName).getRecords();
     }
 }

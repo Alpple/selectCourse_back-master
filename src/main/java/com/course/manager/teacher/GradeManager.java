@@ -1,5 +1,6 @@
 package com.course.manager.teacher;
 
+
 import com.course.dao.CourseDAO;
 import com.course.dao.StudentCourseDAO;
 import com.course.manager.BaseManager;
@@ -24,8 +25,7 @@ public class GradeManager extends BaseManager {
     public Integer getTeacherGradePageCount(Integer teacherId, String courseName, String studentName) {
         return calcPageCount(
                 studentCourseDAO.countTeacherGrade(teacherId, courseName, studentName),
-                StudentCourseDAO.PAGE_SIZE
-        );
+                StudentCourseDAO.PAGE_SIZE);
     }
 
     //    获取教师成绩页面

@@ -2,9 +2,11 @@ package com.course.service;
 
 import com.course.manager.LoginStatusManager;
 import com.course.manager.UserManager;
+import com.course.manager.admin.StudentManager;
 import com.course.model.bo.AuthInfoBO;
 import com.course.model.bo.LoginStatusBO;
 import com.course.model.constant.UserType;
+import com.course.model.entity.StudentEntity;
 import com.course.model.vo.response.ResultVO;
 import org.springframework.stereotype.Service;
 
@@ -15,11 +17,15 @@ public class UserService extends BaseService {
     //    用户管理的服务，包括登录、获取登录状态和注销功能
     private final HttpSession session;
     private final UserManager manager;
+
+//    关于学生的业务逻辑
+    private final StudentManager studentManager;
     private final LoginStatusManager loginStatusManager;
 
-    public UserService(HttpSession session, UserManager manager, LoginStatusManager loginStatusManager) {
+    public UserService(HttpSession session, UserManager manager,StudentManager studentManager, LoginStatusManager loginStatusManager) {
         this.session = session;
         this.manager = manager;
+        this.studentManager = studentManager;
         this.loginStatusManager = loginStatusManager;
     }
 
