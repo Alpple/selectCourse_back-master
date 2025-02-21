@@ -15,6 +15,7 @@ public class TeacherAssessService extends BaseService {
     private TeacherAssessServiceMP teacherAssessServiceMP;
 
     public ResultVO save(TeacherAssessEntity entity) {
+        entity.setStudentId(getUserId());
         return result(teacherAssessServiceMP.save(entity));
     }
 

@@ -39,7 +39,7 @@ public class TeacherAssessController extends BaseController {
 
     @PutMapping("/save")
     @NoLimit
-    public ResultVO save(TeacherAssessEntity entity) {
+    public ResultVO save(@RequestBody TeacherAssessEntity entity) {
         return teacherAssessService.save(entity);
     }
 
