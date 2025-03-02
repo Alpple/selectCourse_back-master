@@ -1,6 +1,7 @@
 package com.course.controller.admin;
 
 import com.course.config.themis.annotation.Admin;
+import com.course.config.themis.annotation.NoLimit;
 import com.course.controller.BaseController;
 import com.course.model.entity.StudentEntity;
 import com.course.model.vo.response.ResultVO;
@@ -23,6 +24,7 @@ public class StudentController extends BaseController {
         return service.get(id);
     }
 
+    @NoLimit
     @PostMapping
     public ResultVO create(@RequestBody @Validated StudentEntity entity) {
         return service.create(entity);

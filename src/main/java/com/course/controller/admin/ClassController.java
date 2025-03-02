@@ -1,6 +1,7 @@
 package com.course.controller.admin;
 
 import com.course.config.themis.annotation.Admin;
+import com.course.config.themis.annotation.NoLimit;
 import com.course.controller.BaseController;
 import com.course.model.entity.ClassEntity;
 import com.course.model.vo.response.ResultVO;
@@ -53,7 +54,7 @@ public class ClassController extends BaseController {
         return service.getPage(index, departmentName, majorName, name);
     }
 
-    @Admin
+    @NoLimit
     @RequestMapping("/names")
     public ResultVO listName() {
         return service.listName();
